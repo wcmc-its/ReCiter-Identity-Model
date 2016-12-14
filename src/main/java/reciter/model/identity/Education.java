@@ -1,21 +1,25 @@
 package reciter.model.identity;
 
 public class Education {
-	private String name;
-	private int degreeYear;
+	private int bachelorYear;
+	private int doctoralYear;
 	
 	public Education() {}
+
+	public int getBachelorYear() {
+		return bachelorYear;
+	}
+
+	public void setBachelorYear(int bachelorYear) {
+		this.bachelorYear = bachelorYear;
+	}
+
+	public int getDoctoralYear() {
+		return doctoralYear;
+	}
+
+	public void setDoctoralYear(int doctoralYear) {
+		this.doctoralYear = doctoralYear;
+	}
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getDegreeYear() {
-		return degreeYear;
-	}
-	public void setDegreeYear(int degreeYear) {
-		this.degreeYear = degreeYear;
-	}
 }
