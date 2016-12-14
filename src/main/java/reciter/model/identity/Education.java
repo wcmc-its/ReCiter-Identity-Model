@@ -4,6 +4,8 @@ public class Education {
 	private String name;
 	private int degreeYear;
 	
+	public Education() {}
+	
 	public String getName() {
 		return name;
 	}

@@ -5,6 +5,8 @@ public class PubMedAlias {
 	private AuthorName authorName;
 	private long pmid;
 	
+	public PubMedAlias() {}
+	
 	public AuthorName getAuthorName() {
 		return authorName;
 	}

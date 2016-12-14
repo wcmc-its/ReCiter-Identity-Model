@@ -6,6 +6,8 @@ public class Grant {
 	private String department;
 	private String organization;
 	
+	public Grant() {}
+	
 	public String getGrantId() {
 		return grantId;
 	}

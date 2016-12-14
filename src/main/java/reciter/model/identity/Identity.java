@@ -27,6 +27,8 @@ public class Identity {
 	private String personType; // type of person: i.e., academic, academic-faculty, etc...
 	private String program; // program the person is in.
 	
+	private Identity() {}
+	
 	public String getCwid() {
 		return cwid;
 	}
