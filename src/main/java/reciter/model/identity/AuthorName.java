@@ -100,22 +100,22 @@ public class AuthorName {
 		return name.getFirstInitial().equals(firstInitial) && name.getLastName().equals(lastName);
 	}
 
-	//	public double nameSimilarityScore(AuthorName name) {
-	//		NameMatchHeuristic[] pattern = match(name);
-	//		if (StringUtils.("333", pattern)) {
-	//			return 100;
-	//		} else if (StringUtils.equals("332", pattern) || StringUtils.equals("323", pattern)) {
-	//			return 80;
-	//		} else if (StringUtils.equals("331", pattern)) {
-	//			return 60;
-	//		} else if (StringUtils.equals("330", pattern)) {
-	//			return 40;
-	//		} else if (StringUtils.equals("322", pattern)) {
-	//			return 10;
-	//		} else {
-	//			return 0;
-	//		}
-	//	}
+//	public double nameSimilarityScore(AuthorName name) {
+//		NameMatchHeuristic[] pattern = match(name);
+//		if (pattern[0] == NameMatchHeuristic) {
+//			return 100;
+//		} else if (StringUtils.equals("332", pattern) || StringUtils.equals("323", pattern)) {
+//			return 80;
+//		} else if (StringUtils.equals("331", pattern)) {
+//			return 60;
+//		} else if (StringUtils.equals("330", pattern)) {
+//			return 40;
+//		} else if (StringUtils.equals("322", pattern)) {
+//			return 10;
+//		} else {
+//			return 0;
+//		}
+//	}
 
 	public enum NameMatchHeuristic {
 		NONE, // two strings do not match
