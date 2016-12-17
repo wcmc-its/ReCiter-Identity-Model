@@ -25,7 +25,7 @@ public class Identity {
 	private LocalDateTime dateInitialRun; // the date of the first time that ReCiter perform the retrieval
 	private LocalDateTime dateLastRun; // the date of the most recent retrieval
 	
-	private Identity() {}
+	public Identity() {}
 
 	public String getCwid() {
 		return cwid;
