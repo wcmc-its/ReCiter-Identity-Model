@@ -1,5 +1,8 @@
 package reciter.model.identity;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
+
+@DynamoDBDocument
 public class Grant {
 	private String grantId;
 	private String sponsorAwardId;

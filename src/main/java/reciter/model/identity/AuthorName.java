@@ -1,8 +1,11 @@
 package reciter.model.identity;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
+
 import java.util.HashSet;
 import java.util.Set;
 
+@DynamoDBDocument
 public class AuthorName {
 
 	/**
