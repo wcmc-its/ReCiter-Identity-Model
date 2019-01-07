@@ -6,6 +6,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>ReCiter-Identity-Model</name>
     <description>A set of classes representing an identity</description>
+    <properties>
+    	<!-- Generic properties -->
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
     <build>
         <sourceDirectory>src</sourceDirectory>
         <plugins>
