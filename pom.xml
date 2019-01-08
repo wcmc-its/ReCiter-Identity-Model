@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.cornell.weill.reciter</groupId>
     <artifactId>reciter-identity-model</artifactId>
-    <version>2.0.3-SNAPSHOT</version>
+    <version>2.0.2-SNAPSHOT</version>
     <name>ReCiter-Identity-Model</name>
     <description>A set of classes representing an identity</description>
     
@@ -32,7 +32,7 @@
 		<connection>scm:git:git://github.com/wcmc-its/ReCiter-PubMed-Model.git</connection>
 		<developerConnection>scm:git:git@github.com:wcmc-its/ReCiter-PubMed-Model.git</developerConnection>
 		<url>https://github.com/wcmc-its/ReCiter-Identity-Model</url>
-		<tag>2.0.2-SNAPSHOT</tag>
+		<tag>2.0.1-SNAPSHOT</tag>
 	</scm>
     
     <distributionManagement>
@@ -40,6 +40,10 @@
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
 	</distributionManagement>
 	
     <properties>
