@@ -60,7 +60,7 @@ The following is a sample record from DynamoDB for the Identity table.
           "firstName": "Mark",
           "lastName": "Bronnimann"
         },
-        "type": "Co-investigator",
+        "type": "CO_INVESTIGATOR",
         "uid": "meb2001"
       },
       {
@@ -69,17 +69,9 @@ The following is a sample record from DynamoDB for the Identity table.
           "firstName": "Eliza",
           "lastName": "Chan"
         },
-        "type": "Co-investigator",
+        "type": "CO_INVESTIGATOR",
         "uid": "elc2013"
       },
-      {
-        "name": {
-          "firstInitial": "T",
-          "firstName": "Terrie",
-          "lastName": "Wheeler",
-          "middleInitial": "R",
-          "middleName": "Rose"
-        },
       {
         "name": {
           "firstInitial": "M",
@@ -88,7 +80,7 @@ The following is a sample record from DynamoDB for the Identity table.
           "middleInitial": "E",
           "middleName": "Eliot"
         },
-        "type": "Shared organizational unit",
+        "type": "HR",
         "uid": "meb7002"
       }
     ],
