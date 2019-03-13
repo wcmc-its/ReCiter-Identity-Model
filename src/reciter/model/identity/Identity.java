@@ -19,6 +19,8 @@
 package reciter.model.identity;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
 
 import java.util.List;
 
@@ -37,16 +39,9 @@ public class Identity {
 	private List<String> personTypes; // type of person: i.e., academic, academic-faculty, etc...
 	private String program; // program the person is in.
 	private List<String> grants; // grantsl
-	private QueryType queryType;
+	private List<PubMedAlias> pubMedAlias; // name alias from PubMed
 	
 	public Identity() {}
-	
-	public enum QueryType {
-		LENIENT_LOOKUP,
-		STRICT_COMPOUND_NAME_LOOKUP,
-		STRICT_EXCEEDS_THRESHOLD_LOOKUP
-		
-	}
 
 	public String getUid() {
 		return uid;
@@ -144,12 +139,11 @@ public class Identity {
 		this.grants = grants;
 	}
 
-	public QueryType getQueryType() {
-		return queryType;
+	public List<PubMedAlias> getPubMedAlias() {
+		return pubMedAlias;
 	}
 
-	public void setQueryType(QueryType queryType) {
-		this.queryType = queryType;
+	public void setPubMedAlias(List<PubMedAlias> pubMedAlias) {
+		this.pubMedAlias = pubMedAlias;
 	}
-	
 }
