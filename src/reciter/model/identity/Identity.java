@@ -19,10 +19,11 @@
 package reciter.model.identity;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
+import java.util.Map;
 
 @DynamoDBDocument
 public class Identity {
@@ -38,8 +39,11 @@ public class Identity {
 	private Education degreeYear; // degreeYear
 	private List<String> personTypes; // type of person: i.e., academic, academic-faculty, etc...
 	private String program; // program the person is in.
-	private List<String> grants; // grantsl
+	private List<String> grants; // grants
 	private List<PubMedAlias> pubMedAlias; // name alias from PubMed
+	@DynamoDBIgnore
+	@JsonIgnore
+	private Map<AuthorName, AuthorName> sanitizedNames; //This contains sanitized names of both primary and alternate names
 	
 	public Identity() {}
 
@@ -145,5 +149,13 @@ public class Identity {
 
 	public void setPubMedAlias(List<PubMedAlias> pubMedAlias) {
 		this.pubMedAlias = pubMedAlias;
+	}
+
+	public Map<AuthorName, AuthorName> getSanitizedNames() {
+		return sanitizedNames;
+	}
+
+	public void setSanitizedNames(Map<AuthorName, AuthorName> sanitizedNames) {
+		this.sanitizedNames = sanitizedNames;
 	}
 }
