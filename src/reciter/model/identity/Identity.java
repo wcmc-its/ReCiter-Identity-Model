@@ -23,6 +23,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
+import reciter.database.dynamodb.model.Gender;
 
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,9 @@ public class Identity {
 
 	private String uid; // uid of the user
 	private AuthorName primaryName; // primary name of the user
+	@DynamoDBIgnore
+	@JsonIgnore
+	private Gender gender; //gender probability of user 
 	private List<AuthorName> alternateNames; // aliases
 	private List<String> emails; // list of emails
 	private List<KnownRelationship> knownRelationships; // known relationships
