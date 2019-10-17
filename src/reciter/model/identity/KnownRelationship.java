@@ -68,7 +68,9 @@ public class KnownRelationship {
 		MENTEE("Mentee"),
 		MANAGER("Manager"),
 		REPORT("Report"),
-		HR("Shared organizational unit")
+		HR("Shared organizational unit"),
+		CTSC_GRANT_ASSOCIATE("CTSC Grant Associate"),
+		CTSC_PROTOCOL_ASSOCIATE("CTSC Protocol Associate")
 		;
 		
 		private final String text;

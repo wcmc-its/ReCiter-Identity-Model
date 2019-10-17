@@ -36,7 +36,8 @@ public class OrganizationalUnit {
 	public enum OrganizationalUnitType {
 		DEPARTMENT,
 		DIVISION,
-		PROGRAM
+		PROGRAM,
+		CENTER
 	}
 	
 	
