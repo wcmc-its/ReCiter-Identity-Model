@@ -115,11 +115,11 @@ public class AuthorName {
 	}
 
 	public boolean firstInitialLastNameMatch(AuthorName name) {
-		return firstInitial.equals(name.getFirstInitial()) && lastName.equals(name.getLastName());
+		return firstInitial.equalsIgnoreCase(name.getFirstInitial()) && lastName.equalsIgnoreCase(name.getLastName());
 	}
 
 	public boolean firstInitialMiddleInitialLastNameMatch(AuthorName name) {
-		return firstInitial.equals(name.getFirstInitial()) && middleInitial.equals(name.getMiddleInitial()) && lastName.equals(name.getLastName());
+		return firstInitial.equalsIgnoreCase(name.getFirstInitial()) && middleInitial.equalsIgnoreCase(name.getMiddleInitial()) && lastName.equalsIgnoreCase(name.getLastName());
 	}
 
 //	public double nameSimilarityScore(AuthorName name) {
@@ -183,9 +183,9 @@ public class AuthorName {
 
 	public boolean isFullNameMatch(AuthorName name) {
 		if (lastName != null && firstName != null && middleName != null) {
-			return firstName.equals(name.getFirstName()) &&
-					middleName.equals(name.getMiddleName()) &&
-					lastName.equals(name.getLastName());
+			return firstName.equalsIgnoreCase(name.getFirstName()) &&
+					middleName.equalsIgnoreCase(name.getMiddleName()) &&
+					lastName.equalsIgnoreCase(name.getLastName());
 		} else {
 			return false;
 		}
@@ -193,13 +193,13 @@ public class AuthorName {
 	
 	public boolean isNameMatch(AuthorName name) {
 		if (lastName != null && firstName != null && middleName != null) {
-			return firstName.equals(name.getFirstName()) &&
-					middleName.equals(name.getMiddleName()) &&
-					lastName.equals(name.getLastName());
+			return firstName.equalsIgnoreCase(name.getFirstName()) &&
+					middleName.equalsIgnoreCase(name.getMiddleName()) &&
+					lastName.equalsIgnoreCase(name.getLastName());
 		} 
 		else if (lastName != null && firstName != null && middleName == null) {
-			return firstName.equals(name.getFirstName()) &&
-					lastName.equals(name.getLastName());
+			return firstName.equalsIgnoreCase(name.getFirstName()) &&
+					lastName.equalsIgnoreCase(name.getLastName());
 		}
 		else {
 			return false;
