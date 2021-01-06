@@ -50,7 +50,6 @@ public class Identity {
 	private List<String> institutions; // institutions
 	private Education degreeYear; // degreeYear
 	private List<String> personTypes; // type of person: i.e., academic, academic-faculty, etc...
-	private String program; // program the person is in.
 	private List<String> grants; // grants
 	@DynamoDBIgnore
 	@JsonIgnore
