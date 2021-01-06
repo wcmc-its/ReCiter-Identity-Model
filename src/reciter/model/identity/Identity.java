@@ -52,7 +52,6 @@ public class Identity {
 	private List<String> personTypes; // type of person: i.e., academic, academic-faculty, etc...
 	private String program; // program the person is in.
 	private List<String> grants; // grants
-	private List<PubMedAlias> pubMedAlias; // name alias from PubMed
 	@DynamoDBIgnore
 	@JsonIgnore
 	private Map<AuthorName, AuthorName> sanitizedNames; //This contains sanitized names of both primary and alternate names
