@@ -10,6 +10,8 @@ public class OrganizationalUnit {
 	private String organizationalUnitLabel;
 	@DynamoDBTyped(DynamoDBAttributeType.S)
 	private OrganizationalUnitType organizationalUnitType;
+	private String startDate;
+	private String endDate;
 	
 	public OrganizationalUnit() {
 		
@@ -32,6 +34,33 @@ public class OrganizationalUnit {
 	public void setOrganizationalUnitType(OrganizationalUnitType organizationalUnitType) {
 		this.organizationalUnitType = organizationalUnitType;
 	}
+	/**
+     * @return String return the startDate
+     */
+    public String getStartDate() {
+        return startDate;
+    }
+
+    /**
+     * @param startDate the startDate to set
+     */
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    /**
+     * @return String return the endDate
+     */
+    public String getEndDate() {
+        return endDate;
+    }
+
+    /**
+     * @param endDate the endDate to set
+     */
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
 	
 	public enum OrganizationalUnitType {
 		DEPARTMENT,
@@ -39,7 +68,4 @@ public class OrganizationalUnit {
 		PROGRAM,
 		CENTER
 	}
-	
-	
-
 }
