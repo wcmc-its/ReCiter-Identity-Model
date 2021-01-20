@@ -21,102 +21,88 @@ The following is a sample record from DynamoDB for the Identity table.
 
 ```
 {
-  "identity": {
-    "alternateNames": [
-      {
-        "firstInitial": "P",
-        "firstName": "Paul",
-        "lastName": "Albert",
-        "middleInitial": "J",
-        "middleName": "J."
-      },
-      {
-        "firstInitial": "P",
-        "firstName": "Paul",
-        "lastName": "Albert"
-      }
-    ],
-    "degreeYear": {
-      "bachelorYear": 1997,
-      "doctoralYear": 0
-    },
-    "emails": [
-      "paa2013@med.cornell.edu",
-      "palbert1@gmail.com"
-    ],
-    "grants": [
-      "RR029822"
-    ],
-    "institutions": [
-      "Colgate University",
-      "Weill Cornell Medical College, Cornell University",
-      "Columbia University, Teachers College",
-      "Pratt Institute"
-    ],
-    "knownRelationships": [
-      {
-        "name": {
-          "firstInitial": "M",
-          "firstName": "Mark",
-          "lastName": "Bronnimann"
-        },
-        "type": "CO_INVESTIGATOR",
-        "uid": "meb2001"
-      },
-      {
-        "name": {
-          "firstInitial": "E",
-          "firstName": "Eliza",
-          "lastName": "Chan"
-        },
-        "type": "CO_INVESTIGATOR",
-        "uid": "elc2013"
-      },
-      {
-        "name": {
-          "firstInitial": "M",
-          "firstName": "Michael",
-          "lastName": "Bales",
-          "middleInitial": "E",
-          "middleName": "Eliot"
-        },
-        "type": "HR",
-        "uid": "meb7002"
-      }
-    ],
-    "organizationalUnits": [
-      {
-        "organizationalUnitLabel": "Library",
-        "organizationalUnitType": "DEPARTMENT"
-      },
-      {
-        "organizationalUnitLabel": "Library",
-        "organizationalUnitType": "DEPARTMENT"
-      }
-    ],
-    "personTypes": [
-      "academic",
-      "academic-faculty",
-      "academic-faculty-associate",
-      "academic-faculty-weillfulltime",
-      "employee-academic",
-      "employee-exempt",
-      "employee",
-      "affiliate",
-      "affiliate-federated",
-      "affiliate-federated-affiliate"
-    ],
-    "primaryName": {
-      "firstInitial": "P",
-      "firstName": "Paul",
-      "lastName": "Albert",
-      "middleInitial": "J",
-      "middleName": "J"
-    },
-    "pubMedAlias": [],
-    "title": "Associate Librarian",
-    "uid": "paa2013"
+  "uid": "ccole",
+  "primaryName": {
+    "firstName": "Curtis",
+    "firstInitial": "C",
+    "middleName": "L",
+    "middleInitial": "L",
+    "lastName": "Cole"
   },
-  "uid": "paa2013"
+  "alternateNames": [
+    {
+      "firstName": "Curtis",
+      "firstInitial": "C",
+      "middleName": "L.",
+      "middleInitial": "L",
+      "lastName": "Cole"
+    },
+    {
+      "firstName": "Curtis",
+      "firstInitial": "C",
+      "middleName": "Leland",
+      "middleInitial": "L",
+      "lastName": "Cole"
+    }
+  ],
+  "emails": [
+    "ccole@med.cornell.edu"
+  ],
+  "knownRelationships": [
+    {
+      "uid": "lgolight",
+      "name": {
+        "firstName": "Linnie",
+        "firstInitial": "L",
+        "middleName": "M",
+        "middleInitial": "M",
+        "lastName": "Golightly"
+      },
+      "type": "CO_INVESTIGATOR"
+  ],
+  "organizationalUnits": [
+    {
+      "organizationalUnitLabel": "Library",
+      "organizationalUnitType": "DEPARTMENT",
+      "startDate": "2010-10-01",
+      "endDate": ""
+    },
+    {
+      "organizationalUnitLabel": "Health Informatics",
+      "organizationalUnitType": "DIVISION",
+      "startDate": "2018-01-01",
+      "endDate": "2019-02-30"
+    }
+  ],  
+  "title": "Associate Professor of Clinical Medicine",
+  "institutions": [
+    "Weill Cornell Medical College, Cornell University",
+    "NewYork-Presbyterian Hospital",
+    "Bowdoin College",
+    "Cornell University Medical College",
+    "Weill Cornell Medical College"
+  ],
+  "degreeYear": {
+    "bachelorYear": 1986,
+    "doctoralYear": 1994
+  },
+  "personTypes": [
+    "academic",
+    "academic-faculty",
+    "academic-faculty-weillfulltime",
+    "academic-faculty-associate",
+    "employee-nonacademic",
+    "employee-exempt",
+    "employee",
+    "affiliate",
+    "affiliate-nyp",
+    "affiliate-nyp-weillcampus-credentialed"
+  ],
+  "grants": [
+    "TR000457",
+    "HS017029"
+  ],
+  "primaryOrganizationalUnit": "Medicine (Infectious Disease)"
+  "primaryInstitution": "Weill Cornell Medical College, Cornell University"
 }
 ```
