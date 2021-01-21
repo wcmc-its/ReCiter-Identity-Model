@@ -22,20 +22,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMarshalling;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConvertedEnum;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 @DynamoDBDocument
 public class KnownRelationship {
 
 	private String uid;
 	private AuthorName name;
-	@DynamoDBMarshalling(marshallerClass=RelationshipTypeEnumMarshaller.class)
+	@DynamoDBTypeConverted(converter = RelationshipTypeEnumMarshaller.class)
 	private RelationshipType type;
 	
 	public String getUid() {

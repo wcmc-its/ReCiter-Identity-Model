@@ -50,9 +50,9 @@ public class Identity {
 	private List<String> institutions; // institutions
 	private Education degreeYear; // degreeYear
 	private List<String> personTypes; // type of person: i.e., academic, academic-faculty, etc...
-	private String program; // program the person is in.
 	private List<String> grants; // grants
-	private List<PubMedAlias> pubMedAlias; // name alias from PubMed
+	private String primaryOrganizationalUnit; //primary org-unit of a person
+	private String primaryInstitution; //primary institution for a person
 	@DynamoDBIgnore
 	@JsonIgnore
 	private Map<AuthorName, AuthorName> sanitizedNames; //This contains sanitized names of both primary and alternate names

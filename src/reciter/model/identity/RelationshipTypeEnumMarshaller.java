@@ -1,19 +1,19 @@
 package reciter.model.identity;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMarshaller;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverter;
 
 import reciter.model.identity.KnownRelationship.RelationshipType;
 
-public class RelationshipTypeEnumMarshaller implements DynamoDBMarshaller<RelationshipType> {
+public class RelationshipTypeEnumMarshaller<T> implements DynamoDBTypeConverter<String, RelationshipType> {
 
 	@Override
-	public String marshall(RelationshipType getterReturnResult) {
-		return getterReturnResult.toString();
+	public String convert(RelationshipType object) {
+		return object.toString();
 	}
 
 	@Override
-	public RelationshipType unmarshall(Class<RelationshipType> clazz, String obj) {
-		return KnownRelationship.getEnum(obj);
+	public RelationshipType unconvert(String object) {
+		return KnownRelationship.getEnum(object);
 	}
 	
 }
