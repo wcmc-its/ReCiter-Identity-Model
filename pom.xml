@@ -33,7 +33,7 @@
 		<connection>scm:git:git://github.com/wcmc-its/ReCiter-Identity-Model.git</connection>
 		<developerConnection>scm:git:git@github.com:wcmc-its/ReCiter-Identity-Model.git</developerConnection>
 		<url>https://github.com/wcmc-its/ReCiter-Identity-Model</url>
-		<tag>2.0.2</tag>
+		<tag>2.0.8</tag>
 	</scm>
     
     <distributionManagement>
@@ -173,12 +173,12 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-dynamodb</artifactId>
-            <version>1.11.478</version>
+            <version>1.11.932</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.16</version>
+            <version>1.18.16</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
