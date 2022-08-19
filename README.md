@@ -102,6 +102,7 @@ The following is a sample record from DynamoDB for the Identity table.
     "TR000457",
     "HS017029"
   ],
+  "primaryEmail": "ccole@med.cornell.edu",
   "primaryOrganizationalUnit": "Medicine (Infectious Disease)"
   "primaryInstitution": "Weill Cornell Medical College, Cornell University"
 }
