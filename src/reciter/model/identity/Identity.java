@@ -62,4 +62,5 @@ public class Identity {
 	@DynamoDBIgnore
 	@JsonIgnore
 	private Map<String, List<String>> identityOrgUnitToSynonymMap; // Map for a actual orgUnit to synonym as defined by ReCiter application
+	private String orcid;
 }
