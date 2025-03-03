@@ -18,11 +18,10 @@
  *******************************************************************************/
 package reciter.model.identity;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-
 import lombok.Data;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 @Data
-@DynamoDBDocument
+@DynamoDbBean
 public class PubMedAlias {
 
 	private AuthorName authorName;

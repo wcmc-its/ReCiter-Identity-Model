@@ -1,14 +1,13 @@
 package reciter.model.identity;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
-@DynamoDBDocument
+@DynamoDbBean
 public class OrganizationalUnit {
 	
 	private String organizationalUnitLabel;
-	@DynamoDBTyped(DynamoDBAttributeType.S)
+	
 	private OrganizationalUnitType organizationalUnitType;
 	private String startDate;
 	private String endDate;
@@ -28,6 +27,7 @@ public class OrganizationalUnit {
 	public void setOrganizationalUnitLabel(String organizationalUnitLabel) {
 		this.organizationalUnitLabel = organizationalUnitLabel;
 	}
+	@DynamoDbConvertedBy(OrganizationalUnitTypeConverter.class)
 	public OrganizationalUnitType getOrganizationalUnitType() {
 		return organizationalUnitType;
 	}

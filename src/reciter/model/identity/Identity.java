@@ -18,28 +18,27 @@
  *******************************************************************************/
 package reciter.model.identity;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import reciter.database.dynamodb.model.Gender;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbIgnore;
 
 /**
  * @author szd2013
  * This class contains defines the Identity which will be used to suggest Publications by ReCiter
  */
 @Data
-@DynamoDBDocument
+@DynamoDbBean
 public class Identity {
 
 	private String uid; // uid of the user
 	private AuthorName primaryName; // primary name of the user
-	@DynamoDBIgnore
 	@JsonIgnore
 	private Gender gender; //gender probability of user 
 	private List<AuthorName> alternateNames; // aliases
@@ -53,14 +52,30 @@ public class Identity {
 	private List<String> grants; // grants
 	private String primaryOrganizationalUnit; //primary org-unit of a person
 	private String primaryInstitution; //primary institution for a person
-	@DynamoDBIgnore
 	@JsonIgnore
 	private Map<AuthorName, AuthorName> sanitizedNames; //This contains sanitized names of both primary and alternate names
-	@DynamoDBIgnore
 	@JsonIgnore
 	private Set<OrganizationalUnit> sanitizedIdentityInstitutions; // sanitized Map of Institutions also will contain synonyms for orgUnit as well
-	@DynamoDBIgnore
 	@JsonIgnore
 	private Map<String, List<String>> identityOrgUnitToSynonymMap; // Map for a actual orgUnit to synonym as defined by ReCiter application
 	private String orcid;
+	
+	@DynamoDbIgnore
+	public Gender getGender() {
+		return gender;
+	}
+	@DynamoDbIgnore
+	public Map<AuthorName, AuthorName> getSanitizedNames() {
+		return sanitizedNames;
+	}
+	@DynamoDbIgnore
+	public Set<OrganizationalUnit> getSanitizedIdentityInstitutions() {
+		return sanitizedIdentityInstitutions;
+	}
+	@DynamoDbIgnore
+	public Map<String, List<String>> getIdentityOrgUnitToSynonymMap() {
+		return identityOrgUnitToSynonymMap;
+	}
+	
+	
 }

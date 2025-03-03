@@ -21,15 +21,16 @@ package reciter.model.identity;
 import java.util.Arrays;
 import java.util.List;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
-@DynamoDBDocument
+
+
+@DynamoDbBean
 public class KnownRelationship {
 
 	private String uid;
 	private AuthorName name;
-	@DynamoDBTypeConverted(converter = RelationshipTypeEnumMarshaller.class)
 	private RelationshipType type;
 	
 	public String getUid() {
@@ -44,6 +45,7 @@ public class KnownRelationship {
 	public void setName(AuthorName name) {
 		this.name = name;
 	}
+	@DynamoDbConvertedBy(RelationshipTypeEnumMarshaller.class)
 	public RelationshipType getType() {
 		return type;
 	}

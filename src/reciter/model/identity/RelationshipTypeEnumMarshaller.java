@@ -1,19 +1,35 @@
 package reciter.model.identity;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverter;
 
 import reciter.model.identity.KnownRelationship.RelationshipType;
+import software.amazon.awssdk.enhanced.dynamodb.AttributeConverter;
+import software.amazon.awssdk.enhanced.dynamodb.AttributeValueType;
+import software.amazon.awssdk.enhanced.dynamodb.EnhancedType;
+import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
-public class RelationshipTypeEnumMarshaller<T> implements DynamoDBTypeConverter<String, RelationshipType> {
+public class RelationshipTypeEnumMarshaller<T> implements AttributeConverter<RelationshipType> {
 
-	@Override
-	public String convert(RelationshipType object) {
-		return object.toString();
-	}
+	 @Override
+	    public AttributeValue transformFrom(RelationshipType input) {
+	        return AttributeValue.builder().s(input.toString()).build();
+	    }
 
-	@Override
-	public RelationshipType unconvert(String object) {
-		return KnownRelationship.getEnum(object);
-	}
+	    @Override
+	    public RelationshipType transformTo(AttributeValue input) {
+	        return KnownRelationship.getEnum(input.s());
+	    }
+
+		@Override
+		public EnhancedType<RelationshipType> type() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public AttributeValueType attributeValueType() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 	
 }

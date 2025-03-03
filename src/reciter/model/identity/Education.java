@@ -18,15 +18,16 @@
  *******************************************************************************/
 package reciter.model.identity;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
-@DynamoDBDocument
+@DynamoDbBean
 public class Education {
 	private int bachelorYear;
 	private int doctoralYear;
 	
 	public Education() {}
 
+	
 	public int getBachelorYear() {
 		return bachelorYear;
 	}

@@ -54,7 +54,8 @@
 		<version.maven-javadoc-plugin>2.10.4</version.maven-javadoc-plugin>
 		<version.maven-scm-provider-gitexe>1.9.5</version.maven-scm-provider-gitexe>
     	<!-- Generic properties -->
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
+		<corretto.version>17</corretto.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -64,11 +65,11 @@
 	        <plugins>
 	            <plugin>
 	                <artifactId>maven-compiler-plugin</artifactId>
-	                <version>3.3</version>
+	                <version>3.10.1</version>
 	                <configuration>
 	                    <encoding>UTF-8</encoding>
-						<source>1.8</source>
-						<target>1.8</target>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
 						<showDeprecation>true</showDeprecation>
 	                </configuration>
 	            </plugin>
@@ -170,21 +171,26 @@
         </pluginManagement>
     </build>
     <dependencies>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-dynamodb</artifactId>
-            <version>1.11.932</version>
-        </dependency>
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>dynamodb</artifactId>
+			<version>2.29.26</version> 
+		</dependency>
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>dynamodb-enhanced</artifactId>
+			<version>2.29.26</version> 
+		</dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.16</version>
+            <version>1.18.32</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-        	<groupId>edu.cornell.weill.reciter</groupId>
-        	<artifactId>reciter-dynamodb-model</artifactId>
-        	<version>2.0.3</version>
+		 <dependency>
+            <groupId>edu.cornell.weill.reciter</groupId>
+            <artifactId>reciter-dynamodb-model</artifactId>
+            <version>2.0.9-SNAPSHOT</version>
         </dependency>
     </dependencies>
     

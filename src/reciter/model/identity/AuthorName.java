@@ -18,14 +18,15 @@
  *******************************************************************************/
 package reciter.model.identity;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-@DynamoDBDocument
+@DynamoDbBean
 public class AuthorName {
 
 	/**
