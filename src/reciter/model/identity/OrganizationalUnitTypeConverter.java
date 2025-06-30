@@ -20,14 +20,12 @@ public class OrganizationalUnitTypeConverter implements AttributeConverter<Organ
 
 	@Override
 	public EnhancedType<OrganizationalUnitType> type() {
-		// TODO Auto-generated method stub
-		return null;
+		 return EnhancedType.of(OrganizationalUnit.OrganizationalUnitType.class);
 	}
 
 	@Override
 	public AttributeValueType attributeValueType() {
-		// TODO Auto-generated method stub
-		return null;
+		return AttributeValueType.S;
 	}
 
 }

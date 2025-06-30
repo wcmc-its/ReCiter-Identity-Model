@@ -21,14 +21,12 @@ public class RelationshipTypeEnumMarshaller<T> implements AttributeConverter<Rel
 
 		@Override
 		public EnhancedType<RelationshipType> type() {
-			// TODO Auto-generated method stub
-			return null;
+			 return EnhancedType.of(RelationshipType.class);	
 		}
 
 		@Override
 		public AttributeValueType attributeValueType() {
-			// TODO Auto-generated method stub
-			return null;
+			  return AttributeValueType.S;
 		}
 
 	
