@@ -20,28 +20,65 @@ package reciter.model.identity;
 
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
+
+/** @author ved4006
+ * Represents the education details of a person.
+ * Includes bachelor and doctoral degree completion years.
+ */
+
 @DynamoDbBean
 public class Education {
+	
+	
+	/**
+	 * The bachelor year
+	 */
 	private int bachelorYear;
+	
+	/**
+	 * The doctoral year
+	 */
 	private int doctoralYear;
 	
+	/**
+     * Default constructor for Education.
+     */
 	public Education() {}
 
 	
+	/**
+	 * Gets the bachelor year.
+	 *
+	 * @return the bachelor year
+	 */
 	public int getBachelorYear() {
 		return bachelorYear;
 	}
 
+	/**
+	 * Sets the bachelor year.
+	 *
+	 * @param bachelorYear the new bachelor year
+	 */
 	public void setBachelorYear(int bachelorYear) {
 		this.bachelorYear = bachelorYear;
 	}
 
+	/**
+	 * Gets the doctoral year.
+	 *
+	 * @return the doctoral year
+	 */
 	public int getDoctoralYear() {
 		return doctoralYear;
 	}
 
+	/**
+	 * Sets the doctoral year.
+	 *
+	 * @param doctoralYear the new doctoral year
+	 */
 	public void setDoctoralYear(int doctoralYear) {
 		this.doctoralYear = doctoralYear;
 	}
-	
 }

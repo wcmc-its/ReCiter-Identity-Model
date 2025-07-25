@@ -36,41 +36,146 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbIgnor
 @DynamoDbBean
 public class Identity {
 
-	private String uid; // uid of the user
-	private AuthorName primaryName; // primary name of the user
+	 /**
+     * The unique user identifier.
+     */
+	private String uid; 
+	 /**
+     * The primary author name associated with the person.
+     */
+	private AuthorName primaryName; 
+	
+	/**
+     * The gender probability or classification of the user.
+     * <p>
+     * This field is ignored in both JSON serialization and DynamoDB mapping.
+     * </p>
+     */
 	@JsonIgnore
-	private Gender gender; //gender probability of user 
-	private List<AuthorName> alternateNames; // aliases
-	private List<String> emails; // list of emails
-	private List<KnownRelationship> knownRelationships; // known relationships
-	private List<OrganizationalUnit> organizationalUnits; // list of department
-	private String title; // title of the person
-	private List<String> institutions; // institutions
-	private Education degreeYear; // degreeYear
-	private List<String> personTypes; // type of person: i.e., academic, academic-faculty, etc...
-	private List<String> grants; // grants
-	private String primaryOrganizationalUnit; //primary org-unit of a person
-	private String primaryInstitution; //primary institution for a person
+	private Gender gender; 
+	
+	/**
+     * Alternate names or aliases for the person.
+     */
+	private List<AuthorName> alternateNames; 
+	
+	 /**
+     * List of  email addresses associated with the person.
+     */
+	private List<String> emails;
+	
+	/**
+     * List of Known relationships 
+     */
+	private List<KnownRelationship> knownRelationships; 
+	
+	/**
+     * Organizational units (e.g., departments).
+     */
+	private List<OrganizationalUnit> organizationalUnits; 
+	
+	/**
+     * The title of the person.
+     */
+	private String title; 
+	
+	/**
+     * List of institutions.
+     */
+	private List<String> institutions; 
+	
+	/**
+     * The user's education degree Year details.
+     */
+	private Education degreeYear; 
+	
+	 /**
+     * Types of the person, e.g., academic, academic-faculty, etc.
+     */
+	private List<String> personTypes;
+	
+	/**
+    * List of grants associated with the user.
+    */
+	private List<String> grants;
+	
+	/**
+     * The person's primary organizational unit.
+     */
+	private String primaryOrganizationalUnit;
+	/**
+     * The person's primary institution.
+     */
+	private String primaryInstitution; 
+	
+	/**
+     * A map of original to sanitized  names (both primary and alternate).
+     * <p>
+     * This field is ignored in both JSON serialization and DynamoDB mapping.
+     * </p>
+     */
 	@JsonIgnore
-	private Map<AuthorName, AuthorName> sanitizedNames; //This contains sanitized names of both primary and alternate names
+	private Map<AuthorName, AuthorName> sanitizedNames; 
+	
+	/**
+     * A set of sanitized of Institutions also will contain synonyms for orgUnit as well.
+     * <p>
+     * This field is ignored in both JSON serialization and DynamoDB mapping.
+     * </p>
+     */
 	@JsonIgnore
 	private Set<OrganizationalUnit> sanitizedIdentityInstitutions; // sanitized Map of Institutions also will contain synonyms for orgUnit as well
+	
+	/**
+    * A map from original orgUnit names to their synonyms, as defined in ReCiter.
+    * <p>
+    * This field is ignored in both JSON serialization and DynamoDB mapping
+    * </p>
+    */
 	@JsonIgnore
-	private Map<String, List<String>> identityOrgUnitToSynonymMap; // Map for a actual orgUnit to synonym as defined by ReCiter application
+	private Map<String, List<String>> identityOrgUnitToSynonymMap; 
+	
+	/**
+     * A unique, persistent identifier that helps to distinguish researchers and connect them with their research outputs.
+     *  It's(Open Researcher and Contributor ID) .
+     */
 	private String orcid;
 	
+	 /**
+     * Gets the gender of the user.
+     *
+     * @return the gender enum
+     */
 	@DynamoDbIgnore
 	public Gender getGender() {
 		return gender;
 	}
+	
+	 /**
+     * Gets the sanitized names map for this identity.
+     *
+     * @return a map of unsanitized to sanitized author names
+     */
 	@DynamoDbIgnore
 	public Map<AuthorName, AuthorName> getSanitizedNames() {
 		return sanitizedNames;
 	}
+	
+	/**
+     * Gets the set of sanitized organizational units for this identity.
+     *
+     * @return a set of normalized org units
+     */
 	@DynamoDbIgnore
 	public Set<OrganizationalUnit> getSanitizedIdentityInstitutions() {
 		return sanitizedIdentityInstitutions;
 	}
+	
+	 /**
+     * Gets the synonym map for the user's organizational units.
+     *
+     * @return a map of orgUnit to synonyms
+     */
 	@DynamoDbIgnore
 	public Map<String, List<String>> getIdentityOrgUnitToSynonymMap() {
 		return identityOrgUnitToSynonymMap;
