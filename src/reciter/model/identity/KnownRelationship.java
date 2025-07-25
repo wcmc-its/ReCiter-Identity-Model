@@ -128,21 +128,37 @@ public class KnownRelationship {
      */
 	public enum RelationshipType {
 		
-		//Relationship type for the Co-Investigator
+		/**
+			Relationship type for the Co-Investigator
+		*/
 		CO_INVESTIGATOR("Co-investigator"),
-		//Relationship type for the Mentor
+		/**
+			Relationship type for the Mentor
+		*/
 		MENTOR("Mentor"),
-		//Relationship type for the Mentee
+		/**
+			Relationship type for the Mentee
+		*/	
 		MENTEE("Mentee"),
-		//Relationship type for the Manager
+		/**
+			Relationship type for the Manager
+		*/	
 		MANAGER("Manager"),
-		//Relationship type for the Report
+		/**
+			Relationship type for the Report
+		*/	
 		REPORT("Report"),
-		//Relationship type for the HR
+		/**
+			Relationship type for the HR
+		*/	
 		HR("Shared organizational unit"),
-		//Relationship type for the CTSC_GRANT_ASSOCIATE
+		/**
+			Relationship type for the CTSC_GRANT_ASSOCIATE
+		*/	
 		CTSC_GRANT_ASSOCIATE("CTSC Grant Associate"),
-		//Relationship type for the CTSC_PROTOCOL_ASSOCIATE
+		/**
+			Relationship type for the CTSC_PROTOCOL_ASSOCIATE
+		*/	
 		CTSC_PROTOCOL_ASSOCIATE("CTSC Protocol Associate")
 		;
 		
