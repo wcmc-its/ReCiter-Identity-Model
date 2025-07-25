@@ -127,32 +127,27 @@ public class KnownRelationship {
      * </p>
      */
 	public enum RelationshipType {
-
-		/** The co investigator. */
+		
+		//Relationship type for the Co-Investigator
 		CO_INVESTIGATOR("Co-investigator"),
-
-		/** The mentor. */
+		//Relationship type for the Mentor
 		MENTOR("Mentor"),
-
-		/** The mentee. */
+		//Relationship type for the Mentee
 		MENTEE("Mentee"),
-
-		/** The manager. */
+		//Relationship type for the Manager
 		MANAGER("Manager"),
-
-		/** The report. */
+		//Relationship type for the Report
 		REPORT("Report"),
-
-		/** The hr. */
+		//Relationship type for the HR
 		HR("Shared organizational unit"),
-
-		/** The ctsc grant associate. */
+		//Relationship type for the CTSC_GRANT_ASSOCIATE
 		CTSC_GRANT_ASSOCIATE("CTSC Grant Associate"),
+		//Relationship type for the CTSC_PROTOCOL_ASSOCIATE
+		CTSC_PROTOCOL_ASSOCIATE("CTSC Protocol Associate")
+		;
+		
+		/** 
 
-		/** The ctsc protocol associate. */
-		CTSC_PROTOCOL_ASSOCIATE("CTSC Protocol Associate");
-
-		/**
 		 * The text.
 		 */
 		private final String text;
