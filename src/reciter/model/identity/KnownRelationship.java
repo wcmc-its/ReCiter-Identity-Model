@@ -111,8 +111,10 @@ public class KnownRelationship {
 	}
 	
 	/**
-    * Returns a string representation of the relationship object.
-    */
+	 * Returns a string representation of the relationship object.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "KnownRelationship [uid=" + uid + ", name=" + name + ", type=" + type + "]";
@@ -126,13 +128,28 @@ public class KnownRelationship {
      */
 	public enum RelationshipType {
 		
+		/** The co investigator. */
 		CO_INVESTIGATOR("Co-investigator"),
+		
+		/** The mentor. */
 		MENTOR("Mentor"),
+		
+		/** The mentee. */
 		MENTEE("Mentee"),
+		
+		/** The manager. */
 		MANAGER("Manager"),
+		
+		/** The report. */
 		REPORT("Report"),
+		
+		/** The hr. */
 		HR("Shared organizational unit"),
+		
+		/** The ctsc grant associate. */
 		CTSC_GRANT_ASSOCIATE("CTSC Grant Associate"),
+		
+		/** The ctsc protocol associate. */
 		CTSC_PROTOCOL_ASSOCIATE("CTSC Protocol Associate")
 		;
 		
