@@ -127,56 +127,55 @@ public class KnownRelationship {
      * </p>
      */
 	public enum RelationshipType {
-		
+
 		/** The co investigator. */
 		CO_INVESTIGATOR("Co-investigator"),
-		
+
 		/** The mentor. */
 		MENTOR("Mentor"),
-		
+
 		/** The mentee. */
 		MENTEE("Mentee"),
-		
+
 		/** The manager. */
 		MANAGER("Manager"),
-		
+
 		/** The report. */
 		REPORT("Report"),
-		
+
 		/** The hr. */
 		HR("Shared organizational unit"),
-		
+
 		/** The ctsc grant associate. */
 		CTSC_GRANT_ASSOCIATE("CTSC Grant Associate"),
-		
+
 		/** The ctsc protocol associate. */
-		CTSC_PROTOCOL_ASSOCIATE("CTSC Protocol Associate")
-		;
-		
-		/** 
+		CTSC_PROTOCOL_ASSOCIATE("CTSC Protocol Associate");
+
+		/**
 		 * The text.
 		 */
 		private final String text;
-		
-		/**
-         * Constructs a relationship type with a display text.
-         *
-         * @param text the display value of the enum
-         */
-		RelationshipType(final String text) {
-	        this.text = text;
-	    }
 
 		/**
-         * Returns the string representation (display name) of the enum.
-         *
-         * @return the display label
-         */
-	    @Override
-	    public String toString() {
-	        return text;
-	    }
-		
+		 * Constructs a relationship type with a display text.
+		 *
+		 * @param text the display value of the enum
+		 */
+		RelationshipType(final String text) {
+			this.text = text;
+		}
+
+		/**
+		 * Returns the string representation (display name) of the enum.
+		 *
+		 * @return the display label
+		 */
+		@Override
+		public String toString() {
+			return text;
+		}
+
 	}
 	
 	/**
