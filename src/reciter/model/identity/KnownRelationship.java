@@ -24,39 +24,106 @@ import java.util.List;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
-
+/**
+ * Represents a known relationship between the identity and  author.
+ * <p>
+ * This includes relationships like mentor, mentee, co-investigator, etc.,
+ * and supports conversion of {@link RelationshipType} to DynamoDB-compatible format.
+ * </p>
+ * @author ved4006
+ */
 
 @DynamoDbBean
 public class KnownRelationship {
 
+	  /**
+     * The unique identifier of the related user.
+     */
 	private String uid;
+	
+	 /**
+     * The name of the related author.
+     */
 	private AuthorName name;
+	
+	 /**
+     * The type of the relationship with the user (e.g., Mentor, Mentee).
+     */
 	private RelationshipType type;
 	
+	/**
+     * Returns the UID of the related identity.
+     *
+     * @return the UID string
+     */
 	public String getUid() {
 		return uid;
 	}
+	
+	 /**
+     * Sets the UID of the related identity.
+     *
+     * @param uid the unique identifier to set
+     */
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
+	
+	/**
+     * Returns the name of the related author.
+     *
+     * @return the {@code AuthorName}
+     */
 	public AuthorName getName() {
 		return name;
 	}
+	
+	 /**
+     * Sets the name of the related author.
+     *
+     * @param name the {@code AuthorName} to set
+     */
 	public void setName(AuthorName name) {
 		this.name = name;
 	}
+	
+	 /**
+     * Returns the relationship type with the related user.
+     * <p>
+     * This method is annotated to use a custom marshaller to convert
+     * between enum and DynamoDB attribute.
+     * </p>
+     *
+     * @return the {@code RelationshipType}
+     */
 	@DynamoDbConvertedBy(RelationshipTypeEnumMarshaller.class)
 	public RelationshipType getType() {
 		return type;
 	}
+	
+	 /**
+     * Sets the relationship type with the related user.
+     *
+     * @param type the {@code RelationshipType} to set
+     */
 	public void setType(RelationshipType type) {
 		this.type = type;
 	}
+	
+	/**
+    * Returns a string representation of the relationship object.
+    */
 	@Override
 	public String toString() {
 		return "KnownRelationship [uid=" + uid + ", name=" + name + ", type=" + type + "]";
 	}
 	
+	/**
+     * Enum representing supported relationship types between users.
+     * <p>
+     * Each enum constant contains a display label used for mapping and UI.
+     * </p>
+     */
 	public enum RelationshipType {
 		
 		CO_INVESTIGATOR("Co-investigator"),
@@ -69,18 +136,25 @@ public class KnownRelationship {
 		CTSC_PROTOCOL_ASSOCIATE("CTSC Protocol Associate")
 		;
 		
+		/** 
+		 * The text.
+		 */
 		private final String text;
-
-	    /**
-	     * @param text
-	     */
+		
+		/**
+         * Constructs a relationship type with a display text.
+         *
+         * @param text the display value of the enum
+         */
 		RelationshipType(final String text) {
 	        this.text = text;
 	    }
 
-	    /* (non-Javadoc)
-	     * @see java.lang.Enum#toString()
-	     */
+		/**
+         * Returns the string representation (display name) of the enum.
+         *
+         * @return the display label
+         */
 	    @Override
 	    public String toString() {
 	        return text;
@@ -88,6 +162,12 @@ public class KnownRelationship {
 		
 	}
 	
+	/**
+     * Returns the enum constant from a given display label.
+     *
+     * @param value the display label to match
+     * @return the matching {@code RelationshipType}, or null if not found
+     */
 	public static RelationshipType getEnum(String value) {
 	    List<RelationshipType> list = Arrays.asList(RelationshipType.values());
 	    return list.stream().filter(m -> m.text.equals(value)).findAny().orElse(null);

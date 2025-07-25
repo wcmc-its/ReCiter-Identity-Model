@@ -25,6 +25,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
+/**
+ * Represents an author's name with support for matching logic and name variant
+ * generation. ved4006
+ */
+
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @DynamoDbBean
 public class AuthorName {
@@ -54,14 +59,18 @@ public class AuthorName {
 	 */
 	private String lastName;
 
-	public AuthorName() {}
+	/**
+	 * Default constructor for AuthorName.
+	 */
+	public AuthorName() {
+	}
 
 	/**
 	 * Constructs an author provided a first name, middle name, and last name.
 	 * 
-	 * @param firstName First name.
+	 * @param firstName  First name.
 	 * @param middleName Middle name.
-	 * @param lastName Last name.
+	 * @param lastName   Last name.
 	 */
 	public AuthorName(String firstName, String middleName, String lastName) {
 
@@ -69,7 +78,6 @@ public class AuthorName {
 			this.firstName = "";
 			this.firstInitial = "";
 		} else {
-			//this.firstName = capitalize(firstName.trim().toLowerCase());
 			this.firstName = firstName.trim();
 			this.firstInitial = this.firstName.substring(0, 1);
 		}
@@ -78,7 +86,6 @@ public class AuthorName {
 			this.middleName = "";
 			this.middleInitial = "";
 		} else {
-			//this.middleName = capitalize(middleName.trim().toLowerCase());
 			this.middleName = middleName.trim();
 			this.middleInitial = this.middleName.substring(0, 1);
 		}
@@ -86,17 +93,15 @@ public class AuthorName {
 		if (lastName == null) {
 			this.lastName = "";
 		} else {
-			//this.lastName = capitalize(lastName.trim().toLowerCase());
 			this.lastName = lastName.trim();
 		}
 	}
 
 	/**
 	 * Capitalize the first character of name (cannot be null).
-	 * 
-	 * @param name
+	 *
+	 * @param name the name
 	 * @return name with first character capitalized.
-	 * 
 	 */
 	private String capitalize(String name) {
 		if (name.length() == 0) {
@@ -115,44 +120,53 @@ public class AuthorName {
 		return String.valueOf(newChars);
 	}
 
+	/**
+	 * Returns true if the first initial and last name match with the given name.
+	 *
+	 * @param name the name
+	 * @return true, if successful
+	 */
 	public boolean firstInitialLastNameMatch(AuthorName name) {
 		return firstInitial.equalsIgnoreCase(name.getFirstInitial()) && lastName.equalsIgnoreCase(name.getLastName());
 	}
 
+	/**
+	 * Returns true if first initial, middle initial, and last name match.
+	 *
+	 * @param name the name
+	 * @return true, if successful
+	 */
 	public boolean firstInitialMiddleInitialLastNameMatch(AuthorName name) {
-		return firstInitial.equalsIgnoreCase(name.getFirstInitial()) && middleInitial.equalsIgnoreCase(name.getMiddleInitial()) && lastName.equalsIgnoreCase(name.getLastName());
+		return firstInitial.equalsIgnoreCase(name.getFirstInitial())
+				&& middleInitial.equalsIgnoreCase(name.getMiddleInitial())
+				&& lastName.equalsIgnoreCase(name.getLastName());
 	}
 
-//	public double nameSimilarityScore(AuthorName name) {
-//		NameMatchHeuristic[] pattern = match(name);
-//		if (pattern[0] == NameMatchHeuristic) {
-//			return 100;
-//		} else if (StringUtils.equals("332", pattern) || StringUtils.equals("323", pattern)) {
-//			return 80;
-//		} else if (StringUtils.equals("331", pattern)) {
-//			return 60;
-//		} else if (StringUtils.equals("330", pattern)) {
-//			return 40;
-//		} else if (StringUtils.equals("322", pattern)) {
-//			return 10;
-//		} else {
-//			return 0;
-//		}
-//	}
-
+	/**
+	 * The Enum NameMatchHeuristic.
+	 */
 	public enum NameMatchHeuristic {
-		NONE, // two strings do not match
-		EMPTY, // both strings have length zero or either one has length zero
-		INITIAL, // both strings have length one and they are equal
+
+		/** The none. */
+		NONE,
+		/** The empty. */
+		// two strings do not match
+		EMPTY,
+		/** The initial. */
+		// both strings have length zero or either one has length zero
+		INITIAL,
+		/** The whole. */
+		// both strings have length one and they are equal
 		WHOLE // both strings are equal
 	}
 
 	/**
-	 * Perform partial match on part of a name
-	 * 0 = different.
-	 * 1 = either null,
-	 * 2 = either initial, (initial matches)
-	 * 3 = same (multiple characters)
+	 * Perform partial match on part of a name 0 = different. 1 = either null, 2 =
+	 * either initial, (initial matches) 3 = same (multiple characters)
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return the name match heuristic
 	 */
 	private NameMatchHeuristic matchNameParts(String x, String y) {
 		if (x.length() == 0 || y.length() == 0) {
@@ -168,83 +182,83 @@ public class AuthorName {
 	}
 
 	/**
-	 * Match two names accounting for variants
-	 * > 330: last and first match
-	 * = 320: bad match on middle name
-	 * > 320: last and first initial match
+	 * Match two names accounting for variants > 330: last and first match = 320:
+	 * bad match on middle name > 320: last and first initial match.
+	 *
+	 * @param y the y
+	 * @return the name match heuristic[]
 	 */
 	private NameMatchHeuristic[] match(AuthorName y) {
-		return new NameMatchHeuristic[]
-				{
-						matchNameParts(getFirstName(), y.getFirstName()),
-						matchNameParts(getMiddleName(), y.getMiddleName()),
-						matchNameParts(getLastName(), y.getLastName())
-				};
+		return new NameMatchHeuristic[] { matchNameParts(getFirstName(), y.getFirstName()),
+				matchNameParts(getMiddleName(), y.getMiddleName()), matchNameParts(getLastName(), y.getLastName()) };
 	}
 
+	/**
+	 * Performs exact match on full name (first, middle, last).
+	 *
+	 * @param name the name
+	 * @return true, if is full name match
+	 */
 	public boolean isFullNameMatch(AuthorName name) {
 		if (lastName != null && firstName != null && middleName != null) {
-			return firstName.equalsIgnoreCase(name.getFirstName()) &&
-					middleName.equalsIgnoreCase(name.getMiddleName()) &&
-					lastName.equalsIgnoreCase(name.getLastName());
+			return firstName.equalsIgnoreCase(name.getFirstName()) && middleName.equalsIgnoreCase(name.getMiddleName())
+					&& lastName.equalsIgnoreCase(name.getLastName());
 		} else {
 			return false;
 		}
 	}
-	
+
+	/**
+	 * Checks if is name match.
+	 *
+	 * @param name the name
+	 * @return true, if is name match
+	 */
 	public boolean isNameMatch(AuthorName name) {
 		if (lastName != null && firstName != null && middleName != null) {
-			return firstName.equalsIgnoreCase(name.getFirstName()) &&
-					middleName.equalsIgnoreCase(name.getMiddleName()) &&
-					lastName.equalsIgnoreCase(name.getLastName());
-		} 
-		else if (lastName != null && firstName != null && middleName == null) {
-			return firstName.equalsIgnoreCase(name.getFirstName()) &&
-					lastName.equalsIgnoreCase(name.getLastName());
-		}
-		else {
+			return firstName.equalsIgnoreCase(name.getFirstName()) && middleName.equalsIgnoreCase(name.getMiddleName())
+					&& lastName.equalsIgnoreCase(name.getLastName());
+		} else if (lastName != null && firstName != null && middleName == null) {
+			return firstName.equalsIgnoreCase(name.getFirstName()) && lastName.equalsIgnoreCase(name.getLastName());
+		} else {
 			return false;
 		}
 	}
 
+	/**
+	 * Check first name and middle name not empty.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean checkFirstNameAndMiddleNameNotEmpty() {
 		return firstName.length() > 1 || middleName.length() > 1;
 	}
 
-	//	public boolean isNameVariant(AuthorName name) {
-	//		return nameVariants.contains(name);
-	//	}
-
 	/**
-	 * Return indexable variants of a name.
-	 * type=target: restrict initials,
-	 * type=coauthor: no restrictions
-	 * initials=1: Last F
-	 * initials=2: Last FM
+	 * Return indexable variants of a name. type=target: restrict initials,
+	 * type=coauthor: no restrictions initials=1: Last F initials=2: Last FM
 	 * 
-	 * @param type target or coauthor. If target, restrict initials. If 
-	 * coauthor, no restrictions.
-	 * This means that if initials is 1, variants of type "R Kukafka" is omitted. 
-	 * (F, "", Last). This results in only 5 options. (assuming the name has
-	 * full first, middle, and last names).
+	 * @param type     target or coauthor. If target, restrict initials. If
+	 *                 coauthor, no restrictions. This means that if initials is 1,
+	 *                 variants of type "R Kukafka" is omitted. (F, "", Last). This
+	 *                 results in only 5 options. (assuming the name has full first,
+	 *                 middle, and last names).
 	 * 
-	 * If initials is 2, variants of type above and type "R M Kukafka" is omitted.
-	 * (F, M, Last). This results in only 4 options. (assuming the name has full
-	 * first, middle, and last names).
+	 *                 If initials is 2, variants of type above and type "R M
+	 *                 Kukafka" is omitted. (F, M, Last). This results in only 4
+	 *                 options. (assuming the name has full first, middle, and last
+	 *                 names).
 	 * 
 	 * @param initials If 1, Last F. If 2, Last FM
 	 * @return A list of variants of a name.
 	 * 
-	 * Invariant: First Name and Last Name must exist, else IllegalArgumentException is thrown.
+	 *         Invariant: First Name and Last Name must exist, else
+	 *         IllegalArgumentException is thrown.
 	 * 
-	 * Eg: The name "Rita Mary Kukafka" has the following 6 variants:
+	 *         Eg: The name "Rita Mary Kukafka" has the following 6 variants:
 	 * 
-	 * 1. "Rita Mary Kukafka"
-	 * 2. "R Kukafka"
-	 * 3. "R Mary Kukafka"
-	 * 4. "R M Kukafka"
-	 * 5. "Rita Kukafka"
-	 * 6. "Rita M Kukafka"
+	 *         1. "Rita Mary Kukafka" 2. "R Kukafka" 3. "R Mary Kukafka" 4. "R M
+	 *         Kukafka" 5. "Rita Kukafka" 6. "Rita M Kukafka"
 	 */
 	public Set<AuthorName> variants(String type, int initials) {
 
@@ -277,56 +291,109 @@ public class AuthorName {
 		return v;
 	}
 
-
-	
+	/**
+	 * Sets the first name.
+	 *
+	 * @param firstName the new first name
+	 */
 	public void setFirstName(String firstName) {
-		if (firstName == null) throw new IllegalArgumentException("first name should not be null.");
-		//this.firstName = capitalize(firstName.trim().toLowerCase());
+		if (firstName == null)
+			throw new IllegalArgumentException("first name should not be null.");
 		this.firstName = firstName.trim();
 		this.firstInitial = firstName.length() > 0 ? firstName.substring(0, 1) : "";
 	}
-	
+
+	/**
+	 * Sets the middle name.
+	 *
+	 * @param middleName the new middle name
+	 */
 	public void setMiddleName(String middleName) {
-		if (middleName == null) throw new IllegalArgumentException("middle name should not be null.");
-		//this.middleName = capitalize(middleName.trim().toLowerCase());
+		if (middleName == null)
+			throw new IllegalArgumentException("middle name should not be null.");
 		this.middleName = middleName.trim();
 		this.middleInitial = middleName.length() > 0 ? middleName.substring(0, 1) : "";
 	}
 
+	/**
+	 * Gets the first name.
+	 *
+	 * @return the first name
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
+	/**
+	 * Gets the first initial.
+	 *
+	 * @return the first initial
+	 */
 	public String getFirstInitial() {
 		return firstInitial;
 	}
 
+	/**
+	 * Gets the middle name.
+	 *
+	 * @return the middle name
+	 */
 	public String getMiddleName() {
 		return middleName;
 	}
 
+	/**
+	 * Gets the middle initial.
+	 *
+	 * @return the middle initial
+	 */
 	public String getMiddleInitial() {
 		return middleInitial;
 	}
 
+	/**
+	 * Gets the last name.
+	 *
+	 * @return the last name
+	 */
 	public String getLastName() {
 		return lastName;
 	}
 
+	/**
+	 * Sets the first initial.
+	 *
+	 * @param firstInitial the new first initial
+	 */
 	public void setFirstInitial(String firstInitial) {
 		this.firstInitial = firstInitial;
 	}
 
+	/**
+	 * Sets the middle initial.
+	 *
+	 * @param middleInitial the new middle initial
+	 */
 	public void setMiddleInitial(String middleInitial) {
 		this.middleInitial = middleInitial;
 	}
 
+	/**
+	 * Sets the last name.
+	 *
+	 * @param lastName the new last name
+	 */
 	public void setLastName(String lastName) {
-		if (lastName == null) throw new IllegalArgumentException("last name should not be null.");
-		//this.lastName = capitalize(lastName.trim().toLowerCase());
+		if (lastName == null)
+			throw new IllegalArgumentException("last name should not be null.");
 		this.lastName = lastName.trim();
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		if (middleName != null && middleName.length() > 0) {
@@ -336,6 +403,11 @@ public class AuthorName {
 		}
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -348,6 +420,12 @@ public class AuthorName {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
