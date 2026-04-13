@@ -21,6 +21,13 @@
 
 	<developers>
 		<developer>
+			<name>Mahender Reddy Jangari</name>
+			<email>mrj4001@med.cornell.edu</email>
+			<organization>Weill Cornell Medicine ITS</organization>
+			<organizationUrl>https://github.com/wcmc-its</organizationUrl>
+			<timezone>GMT+5.5</timezone>
+		</developer>
+		<developer>
 			<name>Sarbajit Dutta</name>
 			<email>szd2013@med.cornell.edu</email>
 			<organization>Weill Cornell Medicine ITS</organization>
@@ -60,7 +67,57 @@
 	</properties>
     <build>
         <sourceDirectory>src</sourceDirectory>
-        <pluginManagement>
+		   <plugins>
+			<!-- Apply the plugin directly here -->
+			<plugin>
+			  <groupId>org.sonatype.central</groupId>
+			  <artifactId>central-publishing-maven-plugin</artifactId>
+			  <version>0.8.0</version>
+			  <extensions>true</extensions>
+			  <configuration>
+				<publishingServerId>central</publishingServerId>
+			  </configuration>
+			</plugin>
+			<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${version.maven-source-plugin}</version>
+					<executions>
+					<execution>
+					<id>attach-sources</id>
+					<phase>package</phase>
+					<goals>
+					<goal>jar</goal>
+					</goals>
+					</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${version.maven-javadoc-plugin}</version>
+					<configuration>
+						<failOnError>false</failOnError>
+						<additionalJOptions>
+						  <additionalJOption>-Xdoclint:none</additionalJOption>
+						</additionalJOptions>
+						<encoding>UTF-8</encoding>
+						<links>
+							<link>https://docs.oracle.com/en/java/javase/11/docs/api/</link>
+						</links>
+					</configuration>
+					<executions>
+						<execution>
+							<id>attach-javadoc</id>
+							<phase>package</phase> 
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+		 </plugins>	 
+	    <pluginManagement>
 	        <plugins>
 	            <plugin>
 	                <artifactId>maven-compiler-plugin</artifactId>
@@ -173,12 +230,12 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-dynamodb</artifactId>
-            <version>1.11.932</version>
+            <version>1.11.941</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
+            <version>1.18.36</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
