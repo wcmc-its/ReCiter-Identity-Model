@@ -24,7 +24,12 @@ import java.util.List;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 @DynamoDBDocument
+@AllArgsConstructor
+@NoArgsConstructor
 public class KnownRelationship {
 
 	private String uid;
