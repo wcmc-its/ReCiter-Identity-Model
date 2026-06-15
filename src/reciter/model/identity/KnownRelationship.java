@@ -21,6 +21,8 @@ package reciter.model.identity;
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
@@ -34,6 +36,8 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConve
  */
 
 @DynamoDbBean
+@AllArgsConstructor
+@NoArgsConstructor
 public class KnownRelationship {
 
 	  /**
