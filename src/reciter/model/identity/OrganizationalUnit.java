@@ -50,12 +50,13 @@ public class OrganizationalUnit {
 	}
 	
 	/**
-     * Constructs an organizational unit with a label and type.
-     *
-     * @param organizationalUnitLabel the name or label of the unit
-     * @param organizationalUnitType  the type of the unit
-     * @param endDate  end date
-     */
+	 * Creates an organizational unit.
+	 *
+	 * @param organizationalUnitLabel the organizational unit label
+	 * @param organizationalUnitType the organizational unit type
+	 * @param startDate the start date associated with the organizational unit
+	 * @param endDate the end date associated with the organizational unit
+	 */
 	public OrganizationalUnit(String organizationalUnitLabel,OrganizationalUnitType organizationalUnitType, String startDate, String endDate) { 
 		this.organizationalUnitLabel = organizationalUnitLabel;
 		this.organizationalUnitType = organizationalUnitType; 
