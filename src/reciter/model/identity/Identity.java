@@ -109,6 +109,11 @@ public class Identity {
 	private String primaryInstitution; 
 	
 	/**
+	 * primaryEmail
+	 */
+	private String primaryEmail;
+	
+	/**
      * A map of original to sanitized  names (both primary and alternate).
      * <p>
      * This field is ignored in both JSON serialization and DynamoDB mapping.

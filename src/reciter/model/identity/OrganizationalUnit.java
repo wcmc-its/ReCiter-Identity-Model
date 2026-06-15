@@ -49,6 +49,21 @@ public class OrganizationalUnit {
 		this.organizationalUnitType = organizationalUnitType;
 	}
 	
+	/**
+	 * Creates an organizational unit.
+	 *
+	 * @param organizationalUnitLabel the organizational unit label
+	 * @param organizationalUnitType the organizational unit type
+	 * @param startDate the start date associated with the organizational unit
+	 * @param endDate the end date associated with the organizational unit
+	 */
+	public OrganizationalUnit(String organizationalUnitLabel,OrganizationalUnitType organizationalUnitType, String startDate, String endDate) { 
+		this.organizationalUnitLabel = organizationalUnitLabel;
+		this.organizationalUnitType = organizationalUnitType; 
+		this.startDate = startDate;
+		this.endDate = endDate; 
+	}
+	
 	 /**
      * Returns the label of the organizational unit.
      *
@@ -143,4 +158,29 @@ public class OrganizationalUnit {
          */
 		CENTER
 	}
+	
+	@Override
+    public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + ((organizationalUnitLabel == null) ? 0 : organizationalUnitLabel.hashCode());
+      return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+          return true;
+        if (obj == null)
+          return false;
+        if (getClass() != obj.getClass())
+          return false;
+		  OrganizationalUnit other = (OrganizationalUnit) obj;
+        if (organizationalUnitLabel == null) {
+          if (other.organizationalUnitLabel != null)
+            return false;
+        } else if (!organizationalUnitLabel.equals(other.organizationalUnitLabel))
+          return false;
+        return true;
+      }		
 }
