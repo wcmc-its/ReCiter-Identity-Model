@@ -47,7 +47,7 @@
     <properties>
         <version.maven-release-plugin>2.5.3</version.maven-release-plugin>
         <version.maven-gpg-plugin>3.1.0</version.maven-gpg-plugin>
-        <version.maven-source-plugin>3.2.1</version.maven-source-plugin>
+        <version.maven-source-plugin>3.4.0</version.maven-source-plugin>
 		<version.maven-javadoc-plugin>3.6.3</version.maven-javadoc-plugin>
 		<version.maven-scm-provider-gitexe>1.9.5</version.maven-scm-provider-gitexe>
     	<!-- Generic properties -->
@@ -199,29 +199,6 @@
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 					</configuration>
 				</plugin>
-	            <plugin>
-	                <groupId>io.swagger</groupId>
-	                <artifactId>swagger-codegen-maven-plugin</artifactId>
-	                <version>3.0.0-rc1</version>
-	                <executions>
-	                    <execution>
-	                        <id>generate-swagger-javaclient</id>
-	                        <phase>generate-sources</phase>
-	                        <goals>
-	                            <goal>generate</goal>
-	                        </goals>
-	                        <configuration>
-	                            <inputSpec>${yaml.file}</inputSpec>
-	                            <configOptions>
-	                                <sourceFolder>${generated-sources-java-path}</sourceFolder>
-	                            </configOptions>
-	                            <output>${generated-sources-path}</output>
-	                            <language>java</language>
-	                            <modelPackage>reciter.model.pubmed</modelPackage>
-	                        </configuration>
-	                    </execution>
-	                </executions>
-	            </plugin>
 	        </plugins>
         </pluginManagement>
     </build>
@@ -245,7 +222,7 @@
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-annotations</artifactId>
-				<version>2.8.4</version>
+				<version>2.22</version>
 			</dependency>
         
     </dependencies>
