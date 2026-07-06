@@ -309,8 +309,16 @@ public class AuthorName {
 	 * @param middleName the new middle name
 	 */
 	public void setMiddleName(String middleName) {
-		if (middleName == null)
-			throw new IllegalArgumentException("middle name should not be null.");
+		// Middle name is OPTIONAL (unlike first/last): many identities have none, so the stored
+		// attribute is null. A DynamoDB unconvert setter must tolerate null or the whole Identity
+		// fails to deserialize — e.g. findByUid threw DynamoDBMappingException ("could not unconvert
+		// attribute") -> 500 in ExternalArticleController.addExternalArticle for such people.
+		if (middleName == null) {
+			this.middleName = null;
+			this.middleInitial = "";
+			return;
+		}
+		//this.middleName = capitalize(middleName.trim().toLowerCase());
 		this.middleName = middleName.trim();
 		this.middleInitial = middleName.length() > 0 ? middleName.substring(0, 1) : "";
 	}
