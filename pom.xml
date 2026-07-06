@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.cornell.weill.reciter</groupId>
     <artifactId>reciter-identity-model</artifactId>
-    <version>3.0.1</version>
+    <version>3.0.2</version>
 	<packaging>jar</packaging>
     <name>ReCiter-Identity-Model</name>
     <description>A set of classes representing an identity</description>
@@ -41,7 +41,7 @@
 		<connection>scm:git:git://github.com/wcmc-its/ReCiter-Identity-Model.git</connection>
 		<developerConnection>scm:git:git@github.com:wcmc-its/ReCiter-Identity-Model.git</developerConnection>
 		<url>https://github.com/wcmc-its/ReCiter-Identity-Model</url>
-		<tag>3.0.1</tag>
+		<tag>3.0.2</tag>
 	</scm>
     
     <properties>
