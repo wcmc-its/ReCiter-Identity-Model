@@ -74,7 +74,9 @@ public class AuthorName {
 	 */
 	public AuthorName(String firstName, String middleName, String lastName) {
 
-		if (firstName == null) {
+		// A blank first name gets the same treatment as null (observed in PubMed
+		// article author data); substring(0, 1) on the trimmed value would throw.
+		if (firstName == null || firstName.trim().isEmpty()) {
 			this.firstName = "";
 			this.firstInitial = "";
 		} else {
