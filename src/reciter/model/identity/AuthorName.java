@@ -76,7 +76,7 @@ public class AuthorName {
 
 		// A blank first name gets the same treatment as null (observed in PubMed
 		// article author data); substring(0, 1) on the trimmed value would throw.
-		if (firstName == null || firstName.trim().isEmpty()) {
+		if (firstName == null || firstName.isBlank()) {
 			this.firstName = "";
 			this.firstInitial = "";
 		} else {
@@ -86,7 +86,7 @@ public class AuthorName {
 
 		// A blank middle name (e.g. "" stored on an Identity in DynamoDB) is treated the
 		// same as null; substring(0, 1) on the trimmed value would otherwise throw.
-		if (middleName == null || middleName.trim().isEmpty()) {
+		if (middleName == null || middleName.isBlank()) {
 			this.middleName = "";
 			this.middleInitial = "";
 		} else {
