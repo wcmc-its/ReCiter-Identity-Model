@@ -74,7 +74,9 @@ public class AuthorName {
 	 */
 	public AuthorName(String firstName, String middleName, String lastName) {
 
-		if (firstName == null) {
+		// A blank first name gets the same treatment as null (observed in PubMed
+	    // article author data); substring(0, 1) on the trimmed value would throw.
+		if (firstName == null || firstName.isBlank()) {
 			this.firstName = "";
 			this.firstInitial = "";
 		} else {
@@ -82,7 +84,9 @@ public class AuthorName {
 			this.firstInitial = this.firstName.substring(0, 1);
 		}
 
-		if (middleName == null) {
+		// A blank middle name (e.g. "" stored on an Identity in DynamoDB) is treated the
+		// same as null; substring(0, 1) on the trimmed value would otherwise throw.
+		if (middleName == null || middleName.isBlank()) {
 			this.middleName = "";
 			this.middleInitial = "";
 		} else {
@@ -319,8 +323,10 @@ public class AuthorName {
 			return;
 		}
 		//this.middleName = capitalize(middleName.trim().toLowerCase());
+		// Derive the initial from the trimmed value so a whitespace-only middle name
+		// yields "" rather than a blank initial.
 		this.middleName = middleName.trim();
-		this.middleInitial = middleName.length() > 0 ? middleName.substring(0, 1) : "";
+		this.middleInitial = this.middleName.length() > 0 ? this.middleName.substring(0, 1) : "";
 	}
 
 	/**
