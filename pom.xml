@@ -35,6 +35,13 @@
 			<organizationUrl>https://github.com/wcmc-its</organizationUrl>
 			<timezone>GMT-5</timezone>
 		</developer>
+		<developer>
+			<name>Veerraju Duppalapudi</name>
+			<email>ved4006@med.cornell.edu</email>
+			<organization>Weill Cornell Medicine ITS</organization>
+			<organizationUrl>https://github.com/wcmc-its</organizationUrl>
+			<timezone>GMT+5.5</timezone>
+		</developer>
 	</developers>
     
     <scm>
@@ -50,7 +57,6 @@
         <version.maven-source-plugin>3.4.0</version.maven-source-plugin>
 		<version.maven-javadoc-plugin>3.11.2</version.maven-javadoc-plugin>
 		<version.maven-scm-provider-gitexe>2.1.0</version.maven-scm-provider-gitexe>
-    	<!-- Generic properties -->
 		<java.version>21</java.version>
 		<corretto.version>21</corretto.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -202,6 +208,19 @@
 	        </plugins>
         </pluginManagement>
     </build>
+    
+    <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>4.0.8</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
     <dependencies>
 		<dependency>
 			<groupId>software.amazon.awssdk</groupId>
@@ -216,13 +235,11 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.32</version>
             <scope>provided</scope>
         </dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-annotations</artifactId>
-				<version>2.22</version>
 			</dependency>
         
     </dependencies>
