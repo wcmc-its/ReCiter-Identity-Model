@@ -55,7 +55,7 @@ public class RelationshipTypeEnumMarshaller<T> implements AttributeConverter<Rel
     */
    @Override
    public RelationshipType transformTo(AttributeValue input) {
-       return KnownRelationship.getEnum(input.s());
+	   return KnownRelationship.RelationshipType.getEnum(input.s());
    }
 
    /**
