@@ -31,7 +31,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 *
 * <p>
 * The enum is stored in DynamoDB using its display text (from {@code toString()}),
-* and deserialized via a custom lookup defined in {@link KnownRelationship#getEnum(String)}.
+* and deserialized via a custom lookup defined in {@link RelationshipType#getEnum(String)}.
 * </p>
 */
 public class RelationshipTypeEnumMarshaller<T> implements AttributeConverter<RelationshipType> {
